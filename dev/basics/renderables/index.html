@@ -47,9 +47,20 @@ r in reprehenderit in voluptate velit esse
 cillum dolore eu fugiat nulla pariatur. E
 xcepteur sint occaecat cupidatat non proid
 ent, sunt in culpa qui officia deserunt mo
-llit anim id est laborum.</code></pre><h2 id="Panel"><a class="docs-heading-anchor" href="#Panel">Panel</a><a id="Panel-1"></a><a class="docs-heading-anchor-permalink" href="#Panel" title="Permalink"></a></h2><p>Okay, time to move beyond simple text. It&#39;s time for:</p><pre class="documenter-example-output"><code class="nohighlight hljs ansi"><span class="sgr38_5" style="color:#ffd700"><span class="sgr1">╭─</span></span> <span class="sgr32"><span class="sgr1">Term&#39;s</span></span> <span class="sgr38_5" style="color:#ffd700"><span class="sgr1">───────╮</span></span>
-<span class="sgr38_5" style="color:#ffd700"><span class="sgr1">│</span></span>     <span class="sgr31">awesome</span>    <span class="sgr38_5" style="color:#ffd700"><span class="sgr1">│</span></span>
-<span class="sgr38_5" style="color:#ffd700"><span class="sgr1">╰──────</span></span> <span class="sgr34"><span class="sgr1">Panels</span></span> <span class="sgr38_5" style="color:#ffd700"><span class="sgr1">──╯</span></span></code></pre><p>Simply put, a <code>Panel</code> showing a piece of content (generally a styled string, but it can be any <code>Renderable</code> really) surrounded by a box. Simple but effective.</p><p>Well not that simple actually because <code>Panel</code> is the first renderable that allows you lots of options to personalize its appearance. For instance the panel printed above is given by:</p><pre><code class="language-julia hljs">    Panel(
+llit anim id est laborum.</code></pre><h2 id="Panel"><a class="docs-heading-anchor" href="#Panel">Panel</a><a id="Panel-1"></a><a class="docs-heading-anchor-permalink" href="#Panel" title="Permalink"></a></h2><p>Okay, time to move beyond simple text. It&#39;s time for:</p><pre><code class="language- hljs">import Term: Panel # hide
+print(# hide
+    Panel(# hide
+        &quot;[red]awesome[/red]&quot;, # hide
+        title=&quot;Term&#39;s&quot;, # hide
+        title_style=&quot;bold green&quot;, # hide
+        style=&quot;gold1 bold&quot;, # hide
+        subtitle=&quot;Panels&quot;, # hide
+        subtitle_style=&quot;bold blue&quot;, # hide
+        subtitle_justify=:right, # hide
+        width=18, # hide
+        justify=:center # hide
+    ) # hide
+) # hide</code></pre><p>Simply put, a <code>Panel</code> showing a piece of content (generally a styled string, but it can be any <code>Renderable</code> really) surrounded by a box. Simple but effective.</p><p>Well not that simple actually because <code>Panel</code> is the first renderable that allows you lots of options to personalize its appearance. For instance the panel printed above is given by:</p><pre><code class="language-julia hljs">    Panel(
         &quot;[red]awesome[/red]&quot;,
         title=&quot;Term&#39;s&quot;,
         title_style=&quot;bold green&quot;,
@@ -80,8 +91,12 @@ DOUBLE_EDGE</code></pre><p>And you can use any of these with your panels:</p><pr
     Panel(width=8, box=:DOUBLE, style=&quot;green&quot;) *
     Panel(width=8, box=:HEAVY, style=&quot;white&quot;) *
     Panel(width=8, box=:ROUNDED, style=&quot;red&quot;),
-)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi"><span class="sgr32">╔══════╗</span><span class="sgr37">┏━━━━━━┓</span><span class="sgr31">╭──────╮</span>
-<span class="sgr32">╚══════╝</span><span class="sgr37">┗━━━━━━┛</span><span class="sgr31">╰──────╯</span></code></pre><p>By the way, <code>Panels</code> are not limited to having strings as content, they can have other renderables too (multiple ones in fact)!</p><pre><code class="language-julia hljs">print(
+)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi"><span class="sgr32">╔══╗</span><span class="sgr37">┏━━┓</span><span class="sgr31">╭──╮</span>
+<span class="sgr32">║</span>  <span class="sgr32">║</span><span class="sgr37">┃</span>  <span class="sgr37">┃</span><span class="sgr31">│</span>  <span class="sgr31">│</span>
+<span class="sgr32">╚══╝</span><span class="sgr37">┗━━┛</span><span class="sgr31">╰──╯</span></code></pre><p>By the way, <code>Panels</code> are not limited to having strings as content, they can have other renderables too (multiple ones in fact)!</p><pre><code class="language- hljs">
+import Term: Panel # hide
+
+print(
     Panel(
         Panel(width=18, style=&quot;green&quot;),
         Panel(width=18, style=&quot;white&quot;),
@@ -91,14 +106,7 @@ DOUBLE_EDGE</code></pre><p>And you can use any of these with your panels:</p><pr
         title_justify=:left,
         title_style=&quot;bold red&quot;
     )
-)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">╭─ <span class="sgr31"><span class="sgr1">so many panels!</span></span> ──╮
-│ <span class="sgr32">╭────────────────╮</span> │
-│ <span class="sgr32">╰────────────────╯</span> │
-│ <span class="sgr37">╭────────────────╮</span> │
-│ <span class="sgr37">╰────────────────╯</span> │
-│ <span class="sgr31">╭────────────────╮</span> │
-│ <span class="sgr31">╰────────────────╯</span> │
-╰────────────────────╯</code></pre><h2 id="TextBox"><a class="docs-heading-anchor" href="#TextBox">TextBox</a><a id="TextBox-1"></a><a class="docs-heading-anchor-permalink" href="#TextBox" title="Permalink"></a></h2><p><code>TextBox</code>es are a very simple but very useful renderable. They bring together <code>RenderableText</code> with <code>Panel</code>. In fact they&#39;re just a panel with a <code>RenderableText</code> inside and with its box hidden.  Why do we need them, you say? Well because now you can have a piece of text, with a nice title and sub title.</p><pre><code class="language-julia hljs">import Term: TextBox
+)</code></pre><h2 id="TextBox"><a class="docs-heading-anchor" href="#TextBox">TextBox</a><a id="TextBox-1"></a><a class="docs-heading-anchor-permalink" href="#TextBox" title="Permalink"></a></h2><p><code>TextBox</code>es are a very simple but very useful renderable. They bring together <code>RenderableText</code> with <code>Panel</code>. In fact they&#39;re just a panel with a <code>RenderableText</code> inside and with its box hidden.  Why do we need them, you say? Well because now you can have a piece of text, with a nice title and sub title.</p><pre><code class="language-julia hljs">import Term: TextBox
 
 print(
     TextBox(
@@ -110,13 +118,13 @@ print(
         subtitle_style=&quot;dim&quot;,
         title_justify=:center,
     )
-)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi"><span class="sgr8">╭─────</span> <span class="sgr31"><span class="sgr1">title!</span></span> <span class="sgr8">───────────────╮</span>
-<span class="sgr8">│</span> ,,,,,,,,,,,,,,,,,,,,,,,,,, <span class="sgr8">│</span>
-<span class="sgr8">│</span> ,,,,,,,,,,,,,,,,,,,,,,,,,, <span class="sgr8">│</span>
-<span class="sgr8">│</span> ,,,,,,,,,,,,,,,,,,,,,,,,,, <span class="sgr8">│</span>
-<span class="sgr8">│</span> ,,,,,,,,,,,,,,,,,,,,,,     <span class="sgr8">│</span>
-<span class="sgr8">│</span>                            <span class="sgr8">│</span>
-<span class="sgr8">╰─</span> <span class="sgr2">sub title!</span> <span class="sgr8">───────────────╯</span></code></pre><p>Okay, admittedly that&#39;s not huge. But it still nice to have. It also helps with keeping layout consistent when mixing panels and text, have a look:</p><pre><code class="language-julia hljs">import Term: RenderableText, Panel
+)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi"><span class="sgr8">╭──────</span> <span class="sgr31"><span class="sgr1">title!</span></span> <span class="sgr8">────────────────╮</span>
+<span class="sgr8">│</span> ,,,,,,,,,,,,,,,,,,,,,,,,,,   <span class="sgr8">│</span>
+<span class="sgr8">│</span> ,,,,,,,,,,,,,,,,,,,,,,,,,,   <span class="sgr8">│</span>
+<span class="sgr8">│</span> ,,,,,,,,,,,,,,,,,,,,,,,,,,   <span class="sgr8">│</span>
+<span class="sgr8">│</span> ,,,,,,,,,,,,,,,,,,,,,,       <span class="sgr8">│</span>
+<span class="sgr8">│</span>                              <span class="sgr8">│</span>
+<span class="sgr8">╰─</span> <span class="sgr2">sub title!</span> <span class="sgr8">─────────────────╯</span></code></pre><p>Okay, admittedly that&#39;s not huge. But it still nice to have. It also helps with keeping layout consistent when mixing panels and text, have a look:</p><pre><code class="language-julia hljs">import Term: RenderableText, Panel
 
 t = &quot;,&quot;^100
 
@@ -131,31 +139,23 @@ print(
 ,,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,
-╭────────────────────╮
-│ ,,,,,,,,,,,,,,,,,, │
-│ ,,,,,,,,,,,,,,,,,, │
-│ ,,,,,,,,,,,,,,,,,, │
-│ ,,,,,,,,,,,,,,,,,, │
-│ ,,,,,,,,,,,,,,,,,, │
-│ ,,,,,,,,,,         │
-╰────────────────────╯</code></pre><p>you see? The panel and the text have the same width, BUT, the panel must fit its box, some padding <em>and</em> its content within the same width. So the size of the text inside will need to change compared to <code>RenderableText(t; width=22)</code>. If we use a <code>TextBox</code> on the other hand:</p><pre><code class="language-julia hljs">tbox = TextBox(t, width=22)
+╭──────────────────────────────────────────────────────────────────────────────╮
+│,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,│
+│,,,,,,,,,,,,,,,,,,,,,,                                                        │
+╰──────────────────────────────────────────────────────────────────────────────╯</code></pre><p>you see? The panel and the text have the same width, BUT, the panel must fit its box, some padding <em>and</em> its content within the same width. So the size of the text inside will need to change compared to <code>RenderableText(t; width=22)</code>. If we use a <code>TextBox</code> on the other hand:</p><pre><code class="language-julia hljs">tbox = TextBox(t, width=22)
 panel = Panel(t, width=22)
 
 print(
     tbox, panel
-)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi"><span class="sgr8">╭────────────────────╮</span>
-<span class="sgr8">│</span> ,,,,,,,,,,,,,,,,,, <span class="sgr8">│</span>
-<span class="sgr8">│</span> ,,,,,,,,,,,,,,,,,, <span class="sgr8">│</span>
-<span class="sgr8">│</span> ,,,,,,,,,,,,,,,,,, <span class="sgr8">│</span>
-<span class="sgr8">│</span> ,,,,,,,,,,,,,,,,,, <span class="sgr8">│</span>
-<span class="sgr8">│</span> ,,,,,,,,,,,,,,,,,, <span class="sgr8">│</span>
-<span class="sgr8">│</span> ,,,,,,,,,,         <span class="sgr8">│</span>
-<span class="sgr8">╰────────────────────╯</span>
-╭────────────────────╮
-│ ,,,,,,,,,,,,,,,,,, │
-│ ,,,,,,,,,,,,,,,,,, │
-│ ,,,,,,,,,,,,,,,,,, │
-│ ,,,,,,,,,,,,,,,,,, │
-│ ,,,,,,,,,,,,,,,,,, │
-│ ,,,,,,,,,,         │
-╰────────────────────╯</code></pre><p>Now the two pieces of text look the same and the final layout is a lot more homogeneous, success!</p><p>Let&#39;s move on to talk about layout more!</p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../colors/">« Colors</a><a class="docs-footer-nextpage" href="../content_layout/">Content layout »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.14 on <span class="colophon-date" title="Thursday 10 March 2022 22:01">Thursday 10 March 2022</span>. Using Julia version 1.7.2.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi"><span class="sgr8">╭──────────────────────╮</span>
+<span class="sgr8">│</span> ,,,,,,,,,,,,,,,,,,   <span class="sgr8">│</span>
+<span class="sgr8">│</span> ,,,,,,,,,,,,,,,,,,   <span class="sgr8">│</span>
+<span class="sgr8">│</span> ,,,,,,,,,,,,,,,,,,   <span class="sgr8">│</span>
+<span class="sgr8">│</span> ,,,,,,,,,,,,,,,,,,   <span class="sgr8">│</span>
+<span class="sgr8">│</span> ,,,,,,,,,,,,,,,,,,   <span class="sgr8">│</span>
+<span class="sgr8">│</span> ,,,,,,,,,,           <span class="sgr8">│</span>
+<span class="sgr8">╰──────────────────────╯</span>
+╭──────────────────────────────────────────────────────────────────────────────╮
+│,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,│
+│,,,,,,,,,,,,,,,,,,,,,,                                                        │
+╰──────────────────────────────────────────────────────────────────────────────╯</code></pre><p>Now the two pieces of text look the same and the final layout is a lot more homogeneous, success!</p><p>Let&#39;s move on to talk about layout more!</p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../colors/">« Colors</a><a class="docs-footer-nextpage" href="../content_layout/">Content layout »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.14 on <span class="colophon-date" title="Thursday 10 March 2022 22:01">Thursday 10 March 2022</span>. Using Julia version 1.7.2.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
