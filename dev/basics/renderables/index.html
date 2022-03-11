@@ -109,13 +109,13 @@ print(
         subtitle_style=&quot;dim&quot;,
         title_justify=:center,
     )
-)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">╭───── <span class="sgr31"><span class="sgr1">title!</span></span> ───────────────╮
-│ ,,,,,,,,,,,,,,,,,,,,,,,,,, │
-│ ,,,,,,,,,,,,,,,,,,,,,,,,,, │
-│ ,,,,,,,,,,,,,,,,,,,,,,,,,, │
-│ ,,,,,,,,,,,,,,,,,,,,,,     │
-│                            │
-╰─ <span class="sgr2">sub title!</span> ───────────────╯</code></pre><p>Okay, admittedly that&#39;s not huge. But it still nice to have. It also helps with keeping layout consistent when mixing panels and text, have a look:</p><pre><code class="language-julia hljs">import Term: RenderableText, Panel
+)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi"><span class="sgr8">╭─────</span> <span class="sgr31"><span class="sgr1">title!</span></span> <span class="sgr8">───────────────╮</span>
+<span class="sgr8">│</span> ,,,,,,,,,,,,,,,,,,,,,,,,,, <span class="sgr8">│</span>
+<span class="sgr8">│</span> ,,,,,,,,,,,,,,,,,,,,,,,,,, <span class="sgr8">│</span>
+<span class="sgr8">│</span> ,,,,,,,,,,,,,,,,,,,,,,,,,, <span class="sgr8">│</span>
+<span class="sgr8">│</span> ,,,,,,,,,,,,,,,,,,,,,,     <span class="sgr8">│</span>
+<span class="sgr8">│</span>                            <span class="sgr8">│</span>
+<span class="sgr8">╰─</span> <span class="sgr2">sub title!</span> <span class="sgr8">───────────────╯</span></code></pre><p>Okay, admittedly that&#39;s not huge. But it still nice to have. It also helps with keeping layout consistent when mixing panels and text, have a look:</p><pre><code class="language-julia hljs">import Term: RenderableText, Panel
 
 t = &quot;,&quot;^100
 
@@ -142,14 +142,14 @@ panel = Panel(t, width=22)
 
 print(
     tbox, panel
-)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">╭────────────────────╮
-│ ,,,,,,,,,,,,,,,,,, │
-│ ,,,,,,,,,,,,,,,,,, │
-│ ,,,,,,,,,,,,,,,,,, │
-│ ,,,,,,,,,,,,,,,,,, │
-│ ,,,,,,,,,,,,,,,,,, │
-│ ,,,,,,,,,,         │
-╰────────────────────╯
+)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi"><span class="sgr8">╭────────────────────╮</span>
+<span class="sgr8">│</span> ,,,,,,,,,,,,,,,,,, <span class="sgr8">│</span>
+<span class="sgr8">│</span> ,,,,,,,,,,,,,,,,,, <span class="sgr8">│</span>
+<span class="sgr8">│</span> ,,,,,,,,,,,,,,,,,, <span class="sgr8">│</span>
+<span class="sgr8">│</span> ,,,,,,,,,,,,,,,,,, <span class="sgr8">│</span>
+<span class="sgr8">│</span> ,,,,,,,,,,,,,,,,,, <span class="sgr8">│</span>
+<span class="sgr8">│</span> ,,,,,,,,,,         <span class="sgr8">│</span>
+<span class="sgr8">╰────────────────────╯</span>
 ╭────────────────────╮
 │ ,,,,,,,,,,,,,,,,,, │
 │ ,,,,,,,,,,,,,,,,,, │
@@ -157,4 +157,4 @@ print(
 │ ,,,,,,,,,,,,,,,,,, │
 │ ,,,,,,,,,,,,,,,,,, │
 │ ,,,,,,,,,,         │
-╰────────────────────╯</code></pre><p>Now the two pieces of text look the same and the final layout is a lot more homogeneous, success!</p><p>Let&#39;s move on to talk about layout more!</p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../colors/">« Colors</a><a class="docs-footer-nextpage" href="../content_layout/">Content layout »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.14 on <span class="colophon-date" title="Friday 11 March 2022 22:12">Friday 11 March 2022</span>. Using Julia version 1.7.2.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+╰────────────────────╯</code></pre><p>Now the two pieces of text look the same and the final layout is a lot more homogeneous, success!</p><p>Let&#39;s move on to talk about layout more!</p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../colors/">« Colors</a><a class="docs-footer-nextpage" href="../content_layout/">Content layout »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.14 on <span class="colophon-date" title="Friday 11 March 2022 22:22">Friday 11 March 2022</span>. Using Julia version 1.7.2.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
